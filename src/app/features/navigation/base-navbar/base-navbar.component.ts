@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-base-navbar',
@@ -10,7 +11,7 @@ export class BaseNavbarComponent implements OnInit {
 
   user: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastrService: ToastrService) { }
   
   ngOnInit(): void {
   }
@@ -41,6 +42,7 @@ export class BaseNavbarComponent implements OnInit {
   signOut(){
     localStorage.clear();
     this.router.navigate([""]);
+    this.toastrService.error("Çıkış Yapıldı")
   }
 
 }
