@@ -261,4 +261,9 @@ export class CvUpdateComponent implements OnInit {
 
     this.candidateCvs.forEach(cv => cv.image = this.candidate.images[this.candidate.images.length -1]);
   }
+  
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
+  }
+  
 }
