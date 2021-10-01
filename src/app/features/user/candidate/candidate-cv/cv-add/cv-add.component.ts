@@ -67,7 +67,7 @@ export class CvAddComponent implements OnInit {
   }
 
   pageReloadDelay() {
-    setTimeout(location.reload.bind(location), 1000);
+    setTimeout(location.reload.bind(location), 100);
   }
 
 }
