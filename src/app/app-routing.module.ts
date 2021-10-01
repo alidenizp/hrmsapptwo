@@ -20,6 +20,9 @@ import { EmployerLoginComponent } from './features/user/employer/employer-login/
 import { EmployerSigninComponent } from './features/user/employer/employer-signin/employer-signin.component';
 import { SystemEmployeeLoginComponent } from './features/user/system-employee/system-employee-login/system-employee-login.component';
 import { SystemEmployeeUpdateControlComponent } from './features/user/system-employee/system-employee-update-control/system-employee-update-control.component';
+import { CandidateLoginGuard } from './guards/candidate-login.guard';
+import { EmployerLoginGuard } from './guards/employer-login.guard';
+import { SystemEmployeeLoginGuard } from './guards/system-employee-login.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", component: HomeComponent },
@@ -28,18 +31,18 @@ const routes: Routes = [
   { path : "employerSignIn", component: EmployerSigninComponent },
   { path : "employerLogin", component: EmployerLoginComponent },
   { path: "jobAdListByCompany/:id", component: JobAdvertisementListByCompanyComponent },
-  { path: "candidateProfile/:id", component: CandidateProfileComponent},
-  { path: "candidateCv/:id", component: CvBaseComponent},
-  { path: "favouriteAds/:id", component: JobAdvertisementFavouriteListComponent },
+  { path: "candidateProfile/:id", component: CandidateProfileComponent, canActivate:[CandidateLoginGuard]},
+  { path: "candidateCv/:id", component: CvBaseComponent, canActivate:[CandidateLoginGuard]},
+  { path: "favouriteAds/:id", component: JobAdvertisementFavouriteListComponent, canActivate:[CandidateLoginGuard] },
   { path: "jobAdsByCompany/:id", component: JobAdvertisementListByCompanyComponent },
-  { path: "employerProfile/:id", component : EmployerProfileComponent },
-  { path: "employerAdControl/:id", component: JobAdvertisementEmployerControlComponent },
-  { path: "newJobAdvertisement", component: JobAdvertisementAddComponent },
+  { path: "employerProfile/:id", component : EmployerProfileComponent, canActivate:[EmployerLoginGuard] },
+  { path: "employerAdControl/:id", component: JobAdvertisementEmployerControlComponent, canActivate:[EmployerLoginGuard] },
+  { path: "newJobAdvertisement", component: JobAdvertisementAddComponent, canActivate:[EmployerLoginGuard] },
   { path: "systemLogin", component: SystemEmployeeLoginComponent },
-  { path: "systemProfile/:id", component: SystemEmployeeProfileComponent },
-  { path: "advertisementControl", component: JobAdvertisementVerificationComponent },
-  { path: "updateControl", component: SystemEmployeeUpdateControlComponent },
-  { path: "newJobPosition", component: EmployerListPositionComponent },
+  { path: "systemProfile/:id", component: SystemEmployeeProfileComponent, canActivate:[SystemEmployeeLoginGuard] },
+  { path: "advertisementControl", component: JobAdvertisementVerificationComponent, canActivate:[SystemEmployeeLoginGuard] },
+  { path: "updateControl", component: SystemEmployeeUpdateControlComponent, canActivate:[SystemEmployeeLoginGuard] },
+  { path: "newJobPosition", component: EmployerListPositionComponent, canActivate:[SystemEmployeeLoginGuard] },
 ];
 
 @NgModule({
