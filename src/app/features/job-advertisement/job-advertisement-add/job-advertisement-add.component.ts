@@ -105,6 +105,7 @@ export class JobAdvertisementAddComponent implements OnInit {
       this.jobAdService.addJobAdvertisement(jobAd).subscribe(res => {
         this.toastrService.warning("Yeni İş İlanı Eklendi ve Onay Bekliyor");
         this.router.navigate(["/employerAdControl/" + this.getUserId()]);
+        this.addJobForm.reset('');
       },
       err => this.toastrService.error("hata"));
     }

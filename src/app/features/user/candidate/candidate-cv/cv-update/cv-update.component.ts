@@ -42,6 +42,7 @@ export class CvUpdateComponent implements OnInit {
       this.cvService.updateTitle(this.updateTitleForm.get("title").value, cvId).subscribe(res => {
         this.updateCvEvent.emit(res.data);
         this.toastrService.success("Başlık Güncellendi...")
+        this.updateTitleForm.reset('');
       },
       err => this.toastrService.error("Bilgiler Güncel...")
       );
@@ -61,6 +62,7 @@ export class CvUpdateComponent implements OnInit {
       this.cvService.updateCoverLetter(this.updateCoverLetterForm.get("coverLetter").value, cvId).subscribe(res => {
         this.updateCvEvent.emit(res.data);
         this.toastrService.success("Ön Yazı Güncellendi...")
+        this.updateCoverLetterForm.reset('');
       },
       err => this.toastrService.error("Bilgiler Güncel...")
     );

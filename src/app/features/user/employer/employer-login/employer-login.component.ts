@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EmployerService } from 'src/app/services/employer/employer.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class EmployerLoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
               private userService: UserService, 
               private toastrService: ToastrService, 
-              private router: Router) { }
+              private router: Router,
+              private employerService: EmployerService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -33,14 +35,17 @@ export class EmployerLoginComponent implements OnInit {
   login(){
     this.userService.login(this.loginForm.get("email").value, this.loginForm.get("password").value)
       .subscribe(res => {
-        this.toastrService.success("giriş yapıldı.")
-        localStorage.setItem("user", JSON.stringify(res.data));
-        localStorage.setItem("userType", "1");
-        let employerId = JSON.parse(localStorage.getItem("user")).id;
-        this.router.navigate(["/employerProfile/" + employerId]);
-      }, 
+        this.employerService.getEmployerById(res.data.id).subscribe(res => {
+          this.toastrService.success("giriş yapıldı.")
+          localStorage.setItem("user", JSON.stringify(res.data));
+          localStorage.setItem("userType", "1");
+          let employerId = JSON.parse(localStorage.getItem("user")).id;
+          this.router.navigate(["/employerProfile/" + employerId]);
+        },
+         err => this.toastrService.error("Hatalı Giriş Yaptınız...")
+        )}, 
       err => {
-        (err: HttpErrorResponse) => this.toastrService.error(err.error.data.errors["uk"]);
+        (err: HttpErrorResponse) => this.toastrService.error("Giriş Bilgileri Hatalı...");
       });
   }
 

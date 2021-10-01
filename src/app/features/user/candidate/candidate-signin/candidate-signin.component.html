@@ -1,5 +1,5 @@
 <main class="form-signin">
-    <form [formGroup] = "signInForm">
+    <form autocomplete="off"   [formGroup] = "signInForm">
       <h1 class="h3 mb-3 fw-normal">Yeni Üyelik Oluştur</h1>
   
       <div class="form-floating mt-1">
@@ -33,7 +33,6 @@
       <div class="form-floating mt-1">
         <input type="password" class="form-control" id="floatingPassword2" placeholder="" formControlName = "confirmPassword">
         <label for="floatingPassword">Şifre Tekrarı</label>
-        <small class="form-text text-danger" *ngIf="validPassword && signInForm.get('confirmPassword').touched">Şifre Tekrarı yanlış</small>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit" (click) = "signIn()">Yeni Üye Oluştur</button>
     </form>

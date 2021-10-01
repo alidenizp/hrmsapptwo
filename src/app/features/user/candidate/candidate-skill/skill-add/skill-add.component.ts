@@ -53,6 +53,7 @@ export class SkillAddComponent implements OnInit {
       .subscribe(res => {
         this.toastrService.success("Yetenek Eklendi");
         this.addSkillEvent.emit(res.data);
+        this.addSkillForm.reset('');
       },
       (err: HttpErrorResponse) => this.toastrService.error(err.error.data.errors["uk"]));
     }

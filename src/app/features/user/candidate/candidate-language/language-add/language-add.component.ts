@@ -83,6 +83,7 @@ export class LanguageAddComponent implements OnInit {
       this.candidateLanguageService.addCandidateLanguage(candidateLanguage).subscribe(res => {
                                                                                               this.toastrService.success("Dil Yeteneği Eklendi");
                                                                                               this.addLanguageEvent.emit(res.data);
+                                                                                              this.addLanguageForm.reset('');
                                                                                             },
                                                                                             (err: HttpErrorResponse) => this.toastrService.error(err.error.data.errors["uk"]));
     }

@@ -34,6 +34,7 @@ export class AddLinkedinComponent implements OnInit {
       this.candidateService.addLinkedinLink(this.candidate.id, link).subscribe(res => {
         this.toastrService.success("Linkedin Hesabı Güncellendi...");
         this.addLinkedinEvent.emit(link);
+        this.addLinkedinForm.reset('');
       });
     }
   }

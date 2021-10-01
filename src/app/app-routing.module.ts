@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: "employerProfile/:id", component : EmployerProfileComponent, canActivate:[EmployerLoginGuard] },
   { path: "employerAdControl/:id", component: JobAdvertisementEmployerControlComponent, canActivate:[EmployerLoginGuard] },
   { path: "newJobAdvertisement", component: JobAdvertisementAddComponent, canActivate:[EmployerLoginGuard] },
-  { path: "systemLogin", component: SystemEmployeeLoginComponent },
+  { path: "systemLogin", component: SystemEmployeeLoginComponent},
   { path: "systemProfile/:id", component: SystemEmployeeProfileComponent, canActivate:[SystemEmployeeLoginGuard] },
   { path: "advertisementControl", component: JobAdvertisementVerificationComponent, canActivate:[SystemEmployeeLoginGuard] },
   { path: "updateControl", component: SystemEmployeeUpdateControlComponent, canActivate:[SystemEmployeeLoginGuard] },

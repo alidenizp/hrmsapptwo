@@ -35,6 +35,7 @@ export class AddGithubComponent implements OnInit {
       this.candidateService.addGithubLink(this.candidate.id, link).subscribe(res => {
         this.toastrService.success("Github Hesabı Güncellendi");
         this.addGithubEvent.emit(link);
+        this.addGithubLinkForm.reset('');
       });
     }
   }

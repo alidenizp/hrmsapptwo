@@ -58,6 +58,7 @@ export class SystemEmployeeUpdateComponent implements OnInit {
         .subscribe(res => {
                             this.toastrService.success(res.data.firstName);
                             this.updateSystemEmployeeEvent.emit(res.data);
+                            this.updateFirstNameForm.reset('');
                           },
                     err => this.toastrService.error(err)            
         );
@@ -70,6 +71,7 @@ export class SystemEmployeeUpdateComponent implements OnInit {
         .subscribe(res => {
                             this.toastrService.success(res.data.lastName);
                             this.updateSystemEmployeeEvent.emit(res.data);
+                            this.updateLastNameForm.reset('');
                           },
                     err => this.toastrService.error(err)              
         );

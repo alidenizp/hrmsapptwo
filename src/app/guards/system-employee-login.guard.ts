@@ -23,7 +23,7 @@ export class SystemEmployeeLoginGuard implements CanActivate {
       return 1;
     }else if(localStorage.getItem("userType") === "2"){
       return 2;
-    }else if(localStorage.getItem("userTpe") === "3"){
+    }else if(localStorage.getItem("userType") === "3"){
       return 3;
     }else{
       return undefined;

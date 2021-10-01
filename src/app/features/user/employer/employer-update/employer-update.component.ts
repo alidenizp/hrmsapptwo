@@ -57,6 +57,7 @@ export class EmployerUpdateComponent implements OnInit {
         .subscribe(res => {
             this.updateEmployerEvent.emit(false);
             this.toastrService.warning("Güncellemeler için Sistem Personeli Onayı Bekleniyor");
+            this.companyNameUpdateForm.reset('');
           },
             err => this.toastrService.error("Bir Hata Oluştu"));
     }
@@ -68,6 +69,7 @@ export class EmployerUpdateComponent implements OnInit {
         .subscribe(res => {
           this.updateEmployerEvent.emit(false);
           this.toastrService.warning("Güncellemeler için Sistem Personeli Onayı Bekleniyor");
+          this.emailWebsiteUpdateForm.reset('')
           },
           err => this.toastrService.error("Bir Hata Oluştu"));
     }
@@ -79,6 +81,7 @@ export class EmployerUpdateComponent implements OnInit {
         .subscribe(res => {
           this.updateEmployerEvent.emit(false);
           this.toastrService.warning("Güncellemeler için Sistem Personeli Onayı Bekleniyor");
+          this.emailWebsiteUpdateForm.reset('');
         },
         err => this.toastrService.error("Bir Hata Oluştu"));
     }

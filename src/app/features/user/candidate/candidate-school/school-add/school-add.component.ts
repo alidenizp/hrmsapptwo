@@ -74,6 +74,7 @@ export class SchoolAddComponent implements OnInit {
       this.candidateSchoolService.addCandidateSchool(candidateSchool).subscribe(res => {
                                                                                         this.toastrService.success("Eğitim bilgisi eklendi...");
                                                                                         this.addSchoolEvent.emit(res.data);
+                                                                                        this.addSchoolForm.reset('');
                                                                                        },
                                                                                 (err : HttpErrorResponse ) => this.toastrService.error(err.error.data.errors["uk"]));
     }

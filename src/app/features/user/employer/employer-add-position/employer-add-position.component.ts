@@ -32,6 +32,7 @@ export class EmployerAddPositionComponent implements OnInit {
     if(this.positionAddForm.valid){
       this.positionService.addPosition(newPosition).subscribe(res => {
         this.addPosEvent.emit(res.data);
+        this.positionAddForm.reset('');
         this.toastrService.success("Yeni Pozisyon Eklendi...")
       },
       err => this.toastrService.error("Hata Oluştu..."))
